@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">My Run</string>
+    
+    <string-array name="tab1_units">
+        <item>Miles</item>
+        <item>Kilometer</item>
+        <item>Meters</item>
+        <item>Yards</item>
+    </string-array>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

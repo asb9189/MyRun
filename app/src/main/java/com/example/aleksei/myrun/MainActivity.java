@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
 
         //Make tabs for the layout
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+        tabLayout.addTab(tabLayout.newTab().setText("Time Calculator"));
+        tabLayout.addTab(tabLayout.newTab().setText("Race Predictor"));
+        tabLayout.addTab(tabLayout.newTab().setText("Splits Generator"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewpager = (ViewPager)findViewById(R.id.pager);
