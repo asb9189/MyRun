@@ -4,11 +4,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -101,14 +101,115 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
         final TextView paceHours = (TextView) view.findViewById(R.id.tab1_paceHours);
         final TextView paceMinutes = (TextView) view.findViewById(R.id.tab1_paceMinutes);
         final TextView paceSeconds = (TextView) view.findViewById(R.id.tab1_paceSeconds);
+        final Spinner paceSpinner = (Spinner) view.findViewById(R.id.tab1_pace_spinner);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //Check if the user filled out only 2 of the rows.
-                if (validDataEntries(hours, minutes, seconds, distance, paceHours, paceMinutes, paceSeconds, typeDistance)) {
-                    Toast.makeText(getActivity(), paceHours.getText().toString(), Toast.LENGTH_SHORT).show();
+                if (validDataEntries(hours, minutes, seconds, distance, paceHours, paceMinutes, paceSeconds, typeDistance, paceSpinner)) {
+
+                    //Knowing that the data is properly formatted lets figure out what column we are calculating
+
+                    //timeRow is an array that holds 3 elements (strings) from time: hours, minutes, and seconds.
+                    String[] timeRow = new String[] {hours.getText().toString(), minutes.getText().toString(), seconds.getText().toString()};
+
+                    //Distance, unit of measurment
+                    String[] distanceRow = new String[] {distance.getText().toString().trim(), typeDistance.getSelectedItem().toString()};
+
+                    //Hours, Minutes, Seconds
+                    String[] paceRow = new String[] {paceHours.getText().toString(), paceMinutes.getText().toString(), paceSeconds.getText().toString(), paceSpinner.getSelectedItem().toString()};
+
+                    /*   Variable Template
+
+                    //Time Variables
+                    int timeHours = Integer.parseInt(timeRow[0]);
+                    int timeMinutes = Integer.parseInt(timeRow[1]);
+                    int timeSeconds = Integer.parseInt(timeRow[2]);
+
+                    //Distance Variables
+                    int distanceDistance = Integer.parseInt(distanceRow[0]);
+                    String distanceUnits = distanceRow[1];
+
+                    //Pace Variables
+                    int paceHours = Integer.parseInt(paceRow[0]);
+                    int paceMinutes = Integer.parseInt(paceRow[1]);
+                    int paceSeconds = Integer.parseInt(paceRow[2]);
+                    String paceUnits = paceRow[3];
+                    */
+
+                    if (timeRow[0].equals("") && timeRow[1].equals("") && timeRow[2].equals("")) {
+
+                        //Were calculating Time
+                        Toast.makeText(getActivity(), "Time", Toast.LENGTH_SHORT).show();
+
+
+                    }
+
+                    else if (distanceRow[0].equals("")) {
+
+                        //Iterate through time and pace array and set blank elements to 0
+
+                        for (int i = 0; i < timeRow.length; i++) {
+                            if (timeRow[i].equals("")) {
+                                timeRow[i] = "0";
+                                if (i == 0) {
+                                    hours.setText("0");
+                                }
+
+                                else if (i == 1) {
+                                    minutes.setText("0");
+                                }
+
+                                else {
+                                    seconds.setText("0");
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < paceRow.length; i++) {
+                            if (paceRow[i].equals("")) {
+                                paceRow[i] = "0";
+                                if (i == 0) {
+                                    paceHours.setText("0");
+                                }
+
+                                else if (i == 1) {
+                                    paceMinutes.setText("0");
+                                }
+
+                                else {
+                                    paceSeconds.setText("0");
+                                }
+                            }
+                        }
+
+                        //Setup variables needed to calculate distance
+                        int timeHours = Integer.parseInt(timeRow[0]);
+                        int timeMinutes = Integer.parseInt(timeRow[1]);
+                        int timeSeconds = Integer.parseInt(timeRow[2]);
+                        int paceHours = Integer.parseInt(paceRow[0]);
+                        int paceMinutes = Integer.parseInt(paceRow[1]);
+                        int paceSeconds = Integer.parseInt(paceRow[2]);
+                        String paceUnits = paceRow[3];
+
+
+
+                    }
+
+                    else {
+
+                        //Were calculating Pace
+                        Toast.makeText(getActivity(), "Pace", Toast.LENGTH_SHORT).show();
+
+
+                    }
+
+
+
+                } else {
+                    Toast.makeText(getActivity(), "Only enter data to fill two rows!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -119,7 +220,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
     }
 
     public static boolean validDataEntries(TextView hours, TextView minutes, TextView seconds, TextView distance,
-                                           TextView paceHours, TextView paceMinutes, TextView paceSeconds, Spinner typeDistance) {
+                                           TextView paceHours, TextView paceMinutes, TextView paceSeconds, Spinner typeDistance, Spinner paceSpinner) {
 
         boolean timeRowFilled = false;
         boolean distanceRowFilled = false;
@@ -132,15 +233,19 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
         //Check if timeRow is filled
 
         if (!timeRow[0].equals("") || !timeRow[1].equals("") || !timeRow[2].equals("")) {
+
+            Log.d("TIMEROW IS FILLED", "TIMEROW IS FILLED");
             timeRowFilled = true;
         }
 
         //Distance, unit of measurment
-        String[] distanceRow = new String[] {distance.getText().toString(), typeDistance.getSelectedItem().toString()};
+        String[] distanceRow = new String[] {distance.getText().toString().trim()};
 
         //Check if distanceRow is filled
 
         if (!distanceRow[0].equals("")) {
+
+            Log.d("WHAT IS INSIDE DISTANCE", distanceRow[0]);
             distanceRowFilled = true;
         }
 
@@ -148,12 +253,42 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
         String[] paceRow = new String[] {paceHours.getText().toString(), paceMinutes.getText().toString(), paceSeconds.getText().toString()};
 
         //Check if paceRow is filled
-        if (!paceRow[0].equals("") || paceRow[1].equals("") || !paceRow[2].equals("")) {
+        if (!paceRow[0].equals("") || !paceRow[1].equals("") || !paceRow[2].equals("")) {
+
+            Log.d("PACEROW IS FILLED", "PACEROW IS FILLED");
             paceRowFilled = true;
         }
 
-        //stub
-        return true;
+        //Check the booleans "Filled" to see if a valid amount of data has been entered by the user.
+
+        //Check if no row is filled out
+        if (timeRowFilled == false && distanceRowFilled == false && paceRowFilled == false) {
+            return false;
+        }
+
+        //Check if all rows are filled out
+        else if (timeRowFilled && distanceRowFilled && paceRowFilled) {
+            return false;
+        }
+
+        //Check if only 1 is filled out
+        else if (timeRowFilled && !distanceRowFilled && !paceRowFilled) {
+            return false;
+        }
+
+        else if (!timeRowFilled && distanceRowFilled && !paceRowFilled) {
+            return false;
+        }
+
+        else if (!timeRowFilled && !distanceRowFilled && paceRowFilled) {
+            return false;
+        }
+
+        else {
+
+            //There are only 2 rows filled out so return true
+            return true;
+        }
 
     }
 

@@ -8,8 +8,12 @@
         <item>Yards</item>
     </string-array>
 
-
-
+    <string-array name="tab1_paceUnits">
+        <item>Mile</item>
+        <item>Kilometer</item>
+        <item>Meter</item>
+        <item>Yard</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
