@@ -3,7 +3,7 @@
     
     <string-array name="tab1_units">
         <item>Miles</item>
-        <item>Kilometer</item>
+        <item>Kilometers</item>
         <item>Meters</item>
         <item>Yards</item>
     </string-array>

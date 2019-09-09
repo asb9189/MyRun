@@ -84,20 +84,76 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tab1, container, false);
+
+        //Calculating the Time/Distance/Pace
         button = (Button) view.findViewById(R.id.tab1_button);
-        TextView hours = (TextView) view.findViewById(R.id.tab1_hours);
-        TextView minutes = (TextView) view.findViewById(R.id.tab1_minutes);
-        TextView seconds = (TextView) view.findViewById(R.id.tab1_seconds);
+
+        //Time
+        final TextView hours = (TextView) view.findViewById(R.id.tab1_hours);
+        final TextView minutes = (TextView) view.findViewById(R.id.tab1_minutes);
+        final TextView seconds = (TextView) view.findViewById(R.id.tab1_seconds);
+
+        //Distance
+        final TextView distance = (TextView) view.findViewById(R.id.tab1_distance);
+        final Spinner typeDistance = (Spinner) view.findViewById(R.id.tab1_distance_spinner);
+
+        //Pace
+        final TextView paceHours = (TextView) view.findViewById(R.id.tab1_paceHours);
+        final TextView paceMinutes = (TextView) view.findViewById(R.id.tab1_paceMinutes);
+        final TextView paceSeconds = (TextView) view.findViewById(R.id.tab1_paceSeconds);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "FUCK OFF", Toast.LENGTH_SHORT).show();
+
+                //Check if the user filled out only 2 of the rows.
+                if (validDataEntries(hours, minutes, seconds, distance, paceHours, paceMinutes, paceSeconds, typeDistance)) {
+                    Toast.makeText(getActivity(), paceHours.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
-
         return view;
+
+    }
+
+    public static boolean validDataEntries(TextView hours, TextView minutes, TextView seconds, TextView distance,
+                                           TextView paceHours, TextView paceMinutes, TextView paceSeconds, Spinner typeDistance) {
+
+        boolean timeRowFilled = false;
+        boolean distanceRowFilled = false;
+        boolean paceRowFilled = false;
+
+        //timeRow is an array that holds 3 elements (strings) from time: hours, minutes, and seconds.
+        //if any of the TextView's do not have user input the string will be an empty string: "".
+        String[] timeRow = new String[] {hours.getText().toString(), minutes.getText().toString(), seconds.getText().toString()};
+
+        //Check if timeRow is filled
+
+        if (!timeRow[0].equals("") || !timeRow[1].equals("") || !timeRow[2].equals("")) {
+            timeRowFilled = true;
+        }
+
+        //Distance, unit of measurment
+        String[] distanceRow = new String[] {distance.getText().toString(), typeDistance.getSelectedItem().toString()};
+
+        //Check if distanceRow is filled
+
+        if (!distanceRow[0].equals("")) {
+            distanceRowFilled = true;
+        }
+
+        //Hours, Minutes, Seconds
+        String[] paceRow = new String[] {paceHours.getText().toString(), paceMinutes.getText().toString(), paceSeconds.getText().toString()};
+
+        //Check if paceRow is filled
+        if (!paceRow[0].equals("") || paceRow[1].equals("") || !paceRow[2].equals("")) {
+            paceRowFilled = true;
+        }
+
+        //stub
+        return true;
 
     }
 

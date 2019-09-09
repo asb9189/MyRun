@@ -120,7 +120,7 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/tab1_paceHours"
         android:layout_width="53dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tab1_hours"
@@ -129,7 +129,7 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/tab1_paceMinutes"
         android:layout_width="57dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tab1_pace"
@@ -139,7 +139,7 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/tab1_paceSeconds"
         android:layout_width="69dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
