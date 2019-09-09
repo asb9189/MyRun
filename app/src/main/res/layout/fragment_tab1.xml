@@ -59,16 +59,17 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tab1_hours"
-        android:layout_toStartOf="@+id/tab1_button"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="65dp"
+        android:layout_toStartOf="@+id/tab1_distance_spinner"
         android:text="Hours" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/tab1_button"
         android:layout_alignTop="@+id/textView"
+        android:layout_toStartOf="@+id/tab1_button"
         android:text="Minutes" />
 
     <TextView

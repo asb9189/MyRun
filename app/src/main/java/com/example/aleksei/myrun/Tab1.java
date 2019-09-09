@@ -194,6 +194,16 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                         int paceSeconds = Integer.parseInt(paceRow[2]);
                         String paceUnits = paceRow[3];
 
+                        //totalTime is in seconds
+                        double totalTime = (timeHours * 3600) + (timeMinutes * 60) + (timeSeconds);
+
+                        //totalTimePace is in seconds
+                        double totalTimePace = (paceHours * 3600) + (paceMinutes * 60) + (paceSeconds);
+
+                        distance.setText(Double.toString(totalTime/totalTimePace));
+
+
+
 
 
                     }
