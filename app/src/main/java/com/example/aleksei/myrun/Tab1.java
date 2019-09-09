@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -192,6 +194,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                         int paceHours = Integer.parseInt(paceRow[0]);
                         int paceMinutes = Integer.parseInt(paceRow[1]);
                         int paceSeconds = Integer.parseInt(paceRow[2]);
+                        String distanceUnits = distanceRow[1];
                         String paceUnits = paceRow[3];
 
                         //totalTime is in seconds
@@ -200,11 +203,195 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                         //totalTimePace is in seconds
                         double totalTimePace = (paceHours * 3600) + (paceMinutes * 60) + (paceSeconds);
 
-                        distance.setText(Double.toString(totalTime/totalTimePace));
+                        DecimalFormat decimalFormat = new DecimalFormat("#.000");
+
+                        //totalDistance is in the units paceUnits is in.
+                        double totalDistance = totalTime/totalTimePace;
+
+                        if (paceUnits.equals("Mile")) {
+
+                            //totalDistance is in Miles
+
+                            if (distanceUnits.equals("Miles")) {
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            else if (distanceUnits.equals("Kilometers")) {
+
+                                totalDistance = totalDistance * 1.609;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            else if (distanceUnits.equals("Meters")) {
+
+                                totalDistance = totalDistance * 1609.344;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            //Units must be in Yards
+                            else {
+
+                                totalDistance = totalDistance * 1760;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
 
 
 
+                        }
 
+                        else if(paceUnits.equals("Kilometer")) {
+
+                            //totalDistance is in Kilometers
+
+                            //Check the units of distance
+                            if (distanceUnits.equals("Miles")) {
+
+                                totalDistance = totalDistance / 1.609;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            else if (distanceUnits.equals("Kilometers")) {
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            else if (distanceUnits.equals("Meters")) {
+
+                                totalDistance = totalDistance * 1000;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            //Units must be in Yards
+                            else {
+
+                                totalDistance = totalDistance * 1093.613;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                        }
+
+                        else if(paceUnits.equals("Meter")) {
+
+                            //totalDistance is in Meters
+
+                            //Check the units of distance
+                            if (distanceUnits.equals("Miles")) {
+
+                                totalDistance = totalDistance / 1609.344;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            else if (distanceUnits.equals("Kilometers")) {
+
+                                totalDistance = totalDistance / 1000;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            else if (distanceUnits.equals("Meters")) {
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            //Units must be in Yards
+                            else {
+
+                                totalDistance = totalDistance * 1.094;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                        }
+
+                        else if(paceUnits.equals("Yard")) {
+
+                            //totalDistance is in Yards
+
+                            //Check the units of distance
+                            if (distanceUnits.equals("Miles")) {
+
+                                totalDistance = totalDistance / 1760;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            else if (distanceUnits.equals("Kilometers")) {
+
+                                totalDistance = totalDistance / 1093.613;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            else if (distanceUnits.equals("Meters")) {
+
+                                totalDistance = totalDistance / 1.094;
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                            //Units must be in Yards
+                            else {
+
+                                totalDistance = Double.parseDouble(decimalFormat.format(totalDistance));
+
+                                distance.setText(Double.toString(totalDistance));
+
+                            }
+
+                        }
 
                     }
 
