@@ -123,6 +123,8 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                     //Hours, Minutes, Seconds
                     String[] paceRow = new String[] {paceHours.getText().toString(), paceMinutes.getText().toString(), paceSeconds.getText().toString(), paceSpinner.getSelectedItem().toString()};
 
+                    DecimalFormat decimalFormat = new DecimalFormat("#.000");
+
                     /*   Variable Template
 
                     //Time Variables
@@ -141,14 +143,124 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                     String paceUnits = paceRow[3];
                     */
 
+                    //Calculating Time (convert distance units into pace units * pace in total seconds)
                     if (timeRow[0].equals("") && timeRow[1].equals("") && timeRow[2].equals("")) {
 
-                        //Were calculating Time
-                        Toast.makeText(getActivity(), "Time", Toast.LENGTH_SHORT).show();
 
+                        for (int i = 0; i < paceRow.length; i++) {
+                            if (paceRow[i].equals("")) {
+                                paceRow[i] = "0";
+                                if (i == 0) {
+                                    paceHours.setText("0");
+                                }
+
+                                else if (i == 1) {
+                                    paceMinutes.setText("0");
+                                }
+
+                                else {
+                                    paceSeconds.setText("0");
+                                }
+                            }
+                        }
+
+                        //Set up variables for calculating time
+                        int distanceDistance = Integer.parseInt(distanceRow[0]);
+                        String distanceUnits = distanceRow[1];
+                        int paceHours = Integer.parseInt(paceRow[0]);
+                        int paceMinutes = Integer.parseInt(paceRow[1]);
+                        int paceSeconds = Integer.parseInt(paceRow[2]);
+                        String paceUnits = paceRow[3];
+
+                        //totalTimePace is in seconds
+                        int totalTimePace = (paceHours * 3600) + (paceMinutes * 60) + (paceSeconds);
+
+                        //distance will be converted to miles
+                        if (paceUnits.equals("Mile")) {
+
+                            if (distanceUnits.equals("Miles")) {
+
+                                double totalTime = distanceDistance * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                double totalHours = totalTime / 60;
+                                double totalMinutes = totalHours % 60;
+                                totalHours = totalHours / 60;
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+                                totalHours = Double.parseDouble(decimalFormat.format(totalHours));
+                                totalMinutes = Double.parseDouble(decimalFormat.format(totalMinutes));
+
+                                hours.setText(Double.toString(totalHours));
+                                minutes.setText(Double.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            //Convert distance from km to miles
+                            if (distanceUnits.equals("Kilometers")) {
+
+                                double totalTime = (distanceDistance / 1.609 ) * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                double totalHours = totalTime / 60;
+                                double totalMinutes = totalHours % 60;
+                                totalHours = totalHours / 60;
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+                                totalHours = Double.parseDouble(decimalFormat.format(totalHours));
+                                totalMinutes = Double.parseDouble(decimalFormat.format(totalMinutes));
+
+                                hours.setText(Double.toString(totalHours));
+                                minutes.setText(Double.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Meters")) {
+
+                                double totalTime = distanceDistance * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                double totalHours = totalTime / 60;
+                                double totalMinutes = totalHours % 60;
+                                totalHours = totalHours / 60;
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+                                totalHours = Double.parseDouble(decimalFormat.format(totalHours));
+                                totalMinutes = Double.parseDouble(decimalFormat.format(totalMinutes));
+
+                                hours.setText(Double.toString(totalHours));
+                                minutes.setText(Double.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Yards")) {
+
+                                double totalTime = distanceDistance * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                double totalHours = totalTime / 60;
+                                double totalMinutes = totalHours % 60;
+                                totalHours = totalHours / 60;
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+                                totalHours = Double.parseDouble(decimalFormat.format(totalHours));
+                                totalMinutes = Double.parseDouble(decimalFormat.format(totalMinutes));
+
+                                hours.setText(Double.toString(totalHours));
+                                minutes.setText(Double.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+
+                        }
 
                     }
 
+                    //Calculating Distance
                     else if (distanceRow[0].equals("")) {
 
                         //Iterate through time and pace array and set blank elements to 0
@@ -202,8 +314,6 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                         //totalTimePace is in seconds
                         double totalTimePace = (paceHours * 3600) + (paceMinutes * 60) + (paceSeconds);
-
-                        DecimalFormat decimalFormat = new DecimalFormat("#.000");
 
                         //totalDistance is in the units paceUnits is in.
                         double totalDistance = totalTime/totalTimePace;
@@ -395,11 +505,8 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                     }
 
+                    //Calculating Pace
                     else {
-
-                        //Were calculating Pace
-                        Toast.makeText(getActivity(), "Pace", Toast.LENGTH_SHORT).show();
-
 
                     }
 
