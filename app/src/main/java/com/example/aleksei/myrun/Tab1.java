@@ -250,6 +250,232 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                         }
 
+                        //Distance will be converted to Km
+                        if (paceUnits.equals("Kilometer")) {
+
+                            if (distanceUnits.equals("Miles")) {
+
+                                double totalTime = (distanceDistance * 1.609) * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            //Convert distance from km to miles
+                            if (distanceUnits.equals("Kilometers")) {
+
+                                double totalTime = distanceDistance * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Meters")) {
+
+                                double totalTime = (distanceDistance / 1000) * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Yards")) {
+
+                                double totalTime = (distanceDistance / 1093.613) * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+
+                        }
+
+                        //Calculating Time
+                        if (paceUnits.equals("Meter")) {
+
+                            if (distanceUnits.equals("Miles")) {
+
+                                double totalTime = (distanceDistance * 1609.344) * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Kilometers")) {
+
+                                double totalTime = (distanceDistance * 1000)  * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Meters")) {
+
+                                double totalTime = distanceDistance * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Yards")) {
+
+                                double totalTime = (distanceDistance / 1.094)* totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+
+                        }
+
+                        //Calculating Time
+                        if (paceUnits.equals("Yard")) {
+
+                            if (distanceUnits.equals("Miles")) {
+
+                                double totalTime = (distanceDistance * 1760)* totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            //Convert distance from km to miles
+                            if (distanceUnits.equals("Kilometers")) {
+
+                                double totalTime = (distanceDistance * 1093.613)  * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Meters")) {
+
+                                double totalTime = (distanceDistance * 1.094) * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Yards")) {
+
+                                double totalTime = distanceDistance * totalTimePace;
+
+                                double totalSeconds =  totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
+
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
+                                seconds.setText(Double.toString(totalSeconds));
+
+                            }
+
+
+                        }
+
+
+
                     }
 
                     //Calculating Distance
