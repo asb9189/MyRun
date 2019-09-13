@@ -123,8 +123,6 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                     //Hours, Minutes, Seconds
                     String[] paceRow = new String[] {paceHours.getText().toString(), paceMinutes.getText().toString(), paceSeconds.getText().toString(), paceSpinner.getSelectedItem().toString()};
 
-                    DecimalFormat decimalFormat = new DecimalFormat("#.000");
-
                     /*   Variable Template
 
                     //Time Variables
@@ -145,6 +143,8 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                     //Calculating Time (convert distance units into pace units * pace in total seconds)
                     if (timeRow[0].equals("") && timeRow[1].equals("") && timeRow[2].equals("")) {
+
+                        DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
 
                         for (int i = 0; i < paceRow.length; i++) {
@@ -183,16 +183,14 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                                 double totalTime = distanceDistance * totalTimePace;
 
                                 double totalSeconds =  totalTime % 60;
-                                double totalHours = totalTime / 60;
-                                double totalMinutes = totalHours % 60;
-                                totalHours = totalHours / 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
 
                                 totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
-                                totalHours = Double.parseDouble(decimalFormat.format(totalHours));
-                                totalMinutes = Double.parseDouble(decimalFormat.format(totalMinutes));
 
-                                hours.setText(Double.toString(totalHours));
-                                minutes.setText(Double.toString(totalMinutes));
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
                                 seconds.setText(Double.toString(totalSeconds));
 
                             }
@@ -200,57 +198,51 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                             //Convert distance from km to miles
                             if (distanceUnits.equals("Kilometers")) {
 
-                                double totalTime = (distanceDistance / 1.609 ) * totalTimePace;
+                                double totalTime = (distanceDistance / 1.609)  * totalTimePace;
 
                                 double totalSeconds =  totalTime % 60;
-                                double totalHours = totalTime / 60;
-                                double totalMinutes = totalHours % 60;
-                                totalHours = totalHours / 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
 
                                 totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
-                                totalHours = Double.parseDouble(decimalFormat.format(totalHours));
-                                totalMinutes = Double.parseDouble(decimalFormat.format(totalMinutes));
 
-                                hours.setText(Double.toString(totalHours));
-                                minutes.setText(Double.toString(totalMinutes));
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
                                 seconds.setText(Double.toString(totalSeconds));
 
                             }
 
                             if (distanceUnits.equals("Meters")) {
 
-                                double totalTime = distanceDistance * totalTimePace;
+                                double totalTime = (distanceDistance / 1609.344) * totalTimePace;
 
                                 double totalSeconds =  totalTime % 60;
-                                double totalHours = totalTime / 60;
-                                double totalMinutes = totalHours % 60;
-                                totalHours = totalHours / 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
 
                                 totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
-                                totalHours = Double.parseDouble(decimalFormat.format(totalHours));
-                                totalMinutes = Double.parseDouble(decimalFormat.format(totalMinutes));
 
-                                hours.setText(Double.toString(totalHours));
-                                minutes.setText(Double.toString(totalMinutes));
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
                                 seconds.setText(Double.toString(totalSeconds));
 
                             }
 
                             if (distanceUnits.equals("Yards")) {
 
-                                double totalTime = distanceDistance * totalTimePace;
+                                double totalTime = (distanceDistance / 1760)* totalTimePace;
 
                                 double totalSeconds =  totalTime % 60;
-                                double totalHours = totalTime / 60;
-                                double totalMinutes = totalHours % 60;
-                                totalHours = totalHours / 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
 
                                 totalSeconds = Double.parseDouble(decimalFormat.format(totalSeconds));
-                                totalHours = Double.parseDouble(decimalFormat.format(totalHours));
-                                totalMinutes = Double.parseDouble(decimalFormat.format(totalMinutes));
 
-                                hours.setText(Double.toString(totalHours));
-                                minutes.setText(Double.toString(totalMinutes));
+                                hours.setText(Integer.toString(totalHours));
+                                minutes.setText(Integer.toString(totalMinutes));
                                 seconds.setText(Double.toString(totalSeconds));
 
                             }
@@ -262,6 +254,8 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                     //Calculating Distance
                     else if (distanceRow[0].equals("")) {
+
+                        DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
                         //Iterate through time and pace array and set blank elements to 0
 
