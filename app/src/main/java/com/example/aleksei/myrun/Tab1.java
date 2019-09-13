@@ -829,6 +829,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             }
 
+                            //BUG HERE
                             if (distanceUnits.equals("Yards")) {
 
                                 totalTime = totalTime / (distanceDistance / 1760);
@@ -880,6 +881,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             }
 
+                            //BUG HERE
                             if (distanceUnits.equals("Meters")) {
 
                                 totalTime = totalTime / (distanceDistance / 1000);
