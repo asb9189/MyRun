@@ -852,7 +852,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                             //We dont need to change distance if both units is miles
                             if (distanceUnits.equals("Miles")) {
 
-                                totalTime = totalTime / distanceDistance;
+                                totalTime = totalTime / (distanceDistance * 1.609);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -867,7 +867,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Kilometers")) {
 
-                                totalTime = totalTime / (distanceDistance / 1.609);
+                                totalTime = totalTime / distanceDistance;
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -882,7 +882,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Meters")) {
 
-                                totalTime = totalTime / (distanceDistance / 1609.344);
+                                totalTime = totalTime / (distanceDistance / 1000);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -897,7 +897,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Yards")) {
 
-                                totalTime = totalTime / (distanceDistance / 1760);
+                                totalTime = totalTime / (distanceDistance / 1093.613);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -918,7 +918,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                             //We dont need to change distance if both units is miles
                             if (distanceUnits.equals("Miles")) {
 
-                                totalTime = totalTime / distanceDistance;
+                                totalTime = totalTime / (distanceDistance * 1609.344);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -933,7 +933,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Kilometers")) {
 
-                                totalTime = totalTime / (distanceDistance / 1.609);
+                                totalTime = totalTime / (distanceDistance * 1000);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -948,7 +948,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Meters")) {
 
-                                totalTime = totalTime / (distanceDistance / 1609.344);
+                                totalTime = totalTime / distanceDistance;
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -963,7 +963,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Yards")) {
 
-                                totalTime = totalTime / (distanceDistance / 1760);
+                                totalTime = totalTime / (distanceDistance / 1.094);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -984,7 +984,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
                             //We dont need to change distance if both units is miles
                             if (distanceUnits.equals("Miles")) {
 
-                                totalTime = totalTime / distanceDistance;
+                                totalTime = totalTime / (distanceDistance * 1760);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -999,7 +999,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Kilometers")) {
 
-                                totalTime = totalTime / (distanceDistance / 1.609);
+                                totalTime = totalTime / (distanceDistance * 1093.613);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -1014,7 +1014,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Meters")) {
 
-                                totalTime = totalTime / (distanceDistance / 1609.344);
+                                totalTime = totalTime / (distanceDistance * 1.094);
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
@@ -1029,7 +1029,7 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                             if (distanceUnits.equals("Yards")) {
 
-                                totalTime = totalTime / (distanceDistance / 1760);
+                                totalTime = totalTime / distanceDistance;
 
                                 int totalSeconds =  (int)totalTime % 60;
                                 int totalHours = (int)totalTime / 60;
