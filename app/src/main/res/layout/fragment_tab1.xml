@@ -118,7 +118,8 @@
         android:layout_above="@+id/tab1_distance_title"
         android:layout_alignStart="@+id/tab1_distance_spinner"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="number" /> <!-- change android:inputType="numberDecimal" when ready to implement distance
+         as a double-->
 
     <EditText
         android:id="@+id/tab1_paceHours"

@@ -725,10 +725,333 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                     }
 
+
+
+
+
+                    /*   Variable Template
+
+                    //Time Variables
+                    int timeHours = Integer.parseInt(timeRow[0]);
+                    int timeMinutes = Integer.parseInt(timeRow[1]);
+                    int timeSeconds = Integer.parseInt(timeRow[2]);
+
+                    //Distance Variables
+                    int distanceDistance = Integer.parseInt(distanceRow[0]);
+                    String distanceUnits = distanceRow[1];
+
+                    //Pace Variables
+                    int paceHours = Integer.parseInt(paceRow[0]);
+                    int paceMinutes = Integer.parseInt(paceRow[1]);
+                    int paceSeconds = Integer.parseInt(paceRow[2]);
+                    String paceUnits = paceRow[3];
+                    */
+
+
+
                     //Calculating Pace
                     else {
 
+                        for (int i = 0; i < timeRow.length; i++) {
+                            if (timeRow[i].equals("")) {
+                                timeRow[i] = "0";
+                                if (i == 0) {
+                                    hours.setText("0");
+                                }
+
+                                else if (i == 1) {
+                                    minutes.setText("0");
+                                }
+
+                                else {
+                                    seconds.setText("0");
+                                }
+                            }
+                        }
+
+                        //Setup variables needed for pace computation
+                        int timeHours = Integer.parseInt(timeRow[0]);
+                        int timeMinutes = Integer.parseInt(timeRow[1]);
+                        int timeSeconds = Integer.parseInt(timeRow[2]);
+                        int distanceDistance = Integer.parseInt(distanceRow[0]);
+                        String distanceUnits = distanceRow[1];
+                        String paceUnits = paceRow[3];
+
+                        //totalTime is in seconds
+                        double totalTime = (timeHours * 3600) + (timeMinutes * 60) + (timeSeconds);
+
+                        //Convert all distanceDistance into miles
+                        if (paceUnits.equals("Mile")) {
+
+                            //We dont need to change distance if both units is miles
+                            if (distanceUnits.equals("Miles")) {
+
+                                totalTime = totalTime / distanceDistance;
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Kilometers")) {
+
+                                totalTime = totalTime / (distanceDistance / 1.609);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Meters")) {
+
+                                totalTime = totalTime / (distanceDistance / 1609.344);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Yards")) {
+
+                                totalTime = totalTime / (distanceDistance / 1760);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                        }
+
+                        //PACE IS IN KILOMETERS
+                        if (paceUnits.equals("Kilometer")) {
+
+                            //We dont need to change distance if both units is miles
+                            if (distanceUnits.equals("Miles")) {
+
+                                totalTime = totalTime / distanceDistance;
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Kilometers")) {
+
+                                totalTime = totalTime / (distanceDistance / 1.609);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Meters")) {
+
+                                totalTime = totalTime / (distanceDistance / 1609.344);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Yards")) {
+
+                                totalTime = totalTime / (distanceDistance / 1760);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                        }
+
+                        //PACE IS IN METERS
+                        if (paceUnits.equals("Meter")) {
+
+                            //We dont need to change distance if both units is miles
+                            if (distanceUnits.equals("Miles")) {
+
+                                totalTime = totalTime / distanceDistance;
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Kilometers")) {
+
+                                totalTime = totalTime / (distanceDistance / 1.609);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Meters")) {
+
+                                totalTime = totalTime / (distanceDistance / 1609.344);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Yards")) {
+
+                                totalTime = totalTime / (distanceDistance / 1760);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                        }
+
+                        //PACE IS IN YARDS
+                        if (paceUnits.equals("Yard")) {
+
+                            //We dont need to change distance if both units is miles
+                            if (distanceUnits.equals("Miles")) {
+
+                                totalTime = totalTime / distanceDistance;
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Kilometers")) {
+
+                                totalTime = totalTime / (distanceDistance / 1.609);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Meters")) {
+
+                                totalTime = totalTime / (distanceDistance / 1609.344);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                            if (distanceUnits.equals("Yards")) {
+
+                                totalTime = totalTime / (distanceDistance / 1760);
+
+                                int totalSeconds =  (int)totalTime % 60;
+                                int totalHours = (int)totalTime / 60;
+                                int totalMinutes = totalHours % 60;
+                                totalHours = (totalHours / 60);
+
+                                paceHours.setText(Integer.toString(totalHours));
+                                paceMinutes.setText(Integer.toString(totalMinutes));
+                                paceSeconds.setText(Integer.toString(totalSeconds));
+
+                            }
+
+                        }
+
                     }
+
+
+
+
+
+
+
 
 
 
