@@ -6,11 +6,33 @@
     tools:context=".Tab2">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:id="@+id/tab2_IHaveRun"
         android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="65dp"
+        android:text="I Have Run:"
+        android:textSize="50px" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="118dp"
         android:layout_height="wrap_content"
-        android:text="Tab 2"
-        android:layout_centerInParent="true"
-        android:textSize="30dp"/>
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/tab2_IHaveRun"
+        android:layout_marginEnd="9dp"
+        android:entries="@array/tab2_units" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tab2_IHaveRun"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="number" />
 
 </RelativeLayout>
