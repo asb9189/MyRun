@@ -1048,15 +1048,6 @@ public class Tab1 extends Fragment implements AdapterView.OnItemSelectedListener
 
                     }
 
-
-
-
-
-
-
-
-
-
                 } else {
                     Toast.makeText(getActivity(), "Only enter data to fill two rows!", Toast.LENGTH_SHORT).show();
                 }
